@@ -1,0 +1,34 @@
+@Composable
+fun StatelessCourseCard(course: Course, onSelect: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onSelect() }
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(text = course.code)
+            Text(text = course.title)
+        }
+    }
+}
+
+@Composable
+fun StatefulCourseScreen() {
+    val courses = listOf(
+        Course("CSC 402", "Mobile Application Programming", 3, "Mon/Wed"),
+        Course("CSC 311", "Database Systems", 4, "Sun/Tue")
+    )
+    var selectedCourse by remember { mutableStateOf("") }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        Text(text = "Selected: $selectedCourse")
+        Spacer(modifier = Modifier.height(8.dp))
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(courses) { course ->
+                StatelessCourseCard(course = course) {
+                    selectedCourse = course.title
+                }
+            }
+        }
+    }
+}
