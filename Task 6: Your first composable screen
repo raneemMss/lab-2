@@ -1,0 +1,44 @@
+package edu.iau.cshj.csc402.lab2
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import edu.iau.cshj.csc402.lab2.ui.theme.LabColors
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            FirstScreen()
+        }
+    }
+}
+
+@Composable
+fun FirstScreen() {
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = LabColors.ScreenBackground
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(text = "Welcome to CSC 402", style = MaterialTheme.typography.headlineMedium)
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun FirstScreenPreview() {
+    FirstScreen()
+}
