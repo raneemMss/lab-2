@@ -1,0 +1,27 @@
+fun letterGrade(mark: Int): String {
+    return when (mark) {
+        in 95..100 -> "A+"
+        in 90..94 -> "A"
+        in 85..89 -> "B+"
+        in 80..84 -> "B"
+        in 75..79 -> "C+"
+        in 70..74 -> "C"
+        in 65..69 -> "D+"
+        in 60..64 -> "D"
+        in 0..59 -> "F"
+        else -> "Invalid"
+    }
+}
+
+fun status(mark: Int): String {
+    return if (mark in 60..100) "Pass" else if (mark in 0..59) "Fail" else "Invalid (Fail)"
+}
+
+fun task3() {
+    val marks = listOf(97, 88, 74, 61, 45, 130)
+    for (mark in marks) {
+        val grade = letterGrade(mark)
+        val stat = if (mark in 0..100) status(mark) else "Invalid (Fail)" 
+        println("Mark $mark -> $grade \t ($stat)")
+    }
+}
